@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Auto-restored theme variables */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    --shadow-x: 0px;
+    --shadow-y: 1px;
+    --shadow-blur: 4px;
+    --shadow-spread: 0px;
+    --shadow-opacity: 0.2;
+    --shadow-color: #000000;
+    --shadow-2xs: var(--shadow-x) var(--shadow-y) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+    --shadow-xs: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-spread) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+    --shadow-sm: var(--shadow-x) var(--shadow-y) calc(var(--shadow-blur) * 1.5) var(--shadow-spread) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+    --shadow-md: calc(var(--shadow-x) * 2) calc(var(--shadow-y) * 2) calc(var(--shadow-blur) * 3) calc(var(--shadow-spread) - 1px) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+    --shadow-lg: calc(var(--shadow-x) * 4) calc(var(--shadow-y) * 4) calc(var(--shadow-blur) * 5) calc(var(--shadow-spread) - 3px) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+    --shadow-xl: calc(var(--shadow-x) * 6) calc(var(--shadow-y) * 6) calc(var(--shadow-blur) * 7) calc(var(--shadow-spread) - 5px) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 100%), transparent);
+    --shadow-2xl: calc(var(--shadow-x) * 8) calc(var(--shadow-y) * 8) calc(max(0px, var(--shadow-blur) * 9 - 8px)) calc(var(--shadow-spread) - 12px) color-mix(in srgb, var(--shadow-color) calc(var(--shadow-opacity) * 250%), transparent);
+    --shadow: var(--shadow-md);
+  }
+}
+
+@layer base {
+  :root, .dark {
+    --background: 210 60% 4%;
+    --foreground: 190 60% 90%;
+    --card: 205 60% 7%;
+    --card-foreground: 190 60% 90%;
+    --popover: 205 60% 7%;
+    --popover-foreground: 190 60% 90%;
+    --primary: 187 95% 55%;
+    --primary-foreground: 210 60% 6%;
+    --secondary: 200 45% 14%;
+    --secondary-foreground: 190 60% 90%;
+    --muted: 200 40% 12%;
+    --muted-foreground: 195 25% 60%;
+    --accent: 32 95% 58%;
+    --accent-foreground: 210 60% 6%;
+    --destructive: 0 80% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 190 60% 25%;
+    --input: 190 50% 20%;
+    --ring: 187 95% 55%;
+    --radius: 0.25rem;
+    --chart-1: 187 95% 55%;
+    --chart-2: 32 95% 58%;
+    --chart-3: 200 80% 50%;
+    --chart-4: 160 70% 45%;
+    --chart-5: 280 60% 60%;
+    --font-sans: "Rajdhani", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+  }
+  * { @apply border-border; }
+  body {
+    @apply bg-background text-foreground font-sans text-[15px];
+    background-image:
+      radial-gradient(ellipse at top, hsl(187 95% 55% / 0.08), transparent 60%),
+      linear-gradient(hsl(187 95% 55% / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(187 95% 55% / 0.04) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .font-display { font-family: "Orbitron", sans-serif; letter-spacing: 0.08em; }
+  .glow-text { text-shadow: 0 0 12px hsl(var(--primary) / 0.7); }
+  .holo-panel {
+    @apply relative border border-primary/40 bg-card/70 backdrop-blur-md;
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.12), inset 0 0 30px hsl(var(--primary) / 0.05);
+  }
+  .holo-panel::before, .holo-panel::after {
+    content: ""; position: absolute; width: 14px; height: 14px; pointer-events: none;
+    border-color: hsl(var(--accent));
+  }
+  .holo-panel::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+  .holo-panel::after { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+}
+
+.leaflet-container { isolation: isolate; z-index: 0; background: hsl(var(--background)); }
